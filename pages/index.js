@@ -16,14 +16,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <nav className={styles.mainnav}>
-        <ul>
-          <Link href='/'><li>Home</li></Link>
-          <Link href='/about'><li>About</li></Link>
-          <Link href='/blog'><li>Blogs</li></Link>
-          <Link href='/contact'><li>Contact</li></Link>
-        </ul>
-      </nav>
+      
       <main className={`${styles.main} ${inter.className}`}>
         <div><h1 className={styles.title}>
           Hunting Coder
