@@ -3,18 +3,14 @@ import styles from '@/styles/Blog.module.css'
 import Link from 'next/link'
 
 
-const blog = () => {
+const blog = (props) => {
+  console.log(props)
 
-  const [blogs, setBlogs] = useState([])
+  const [blogs, setBlogs] = useState(props.allBlogs)
 
-  useEffect(() => {
-    console.log('useeffect running')
-    fetch('http://localhost:3000/api/blogs').then((a) => {
-      return a.json();
-    }).then((parsed) => {
-      setBlogs(parsed)
-    })
-  }, [])
+  // useEffect(() => {
+    
+  // }, [])
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -31,6 +27,18 @@ const blog = () => {
 
     </div>
   )
+}
+
+export const getServerSideProps = async () => {
+    let data = await fetch('http://localhost:3000/api/blogs')
+    let allBlogs =  await data.json()
+    
+    
+    
+  
+  return { 
+    props: { allBlogs }
+   }
 }
 
 export default blog
